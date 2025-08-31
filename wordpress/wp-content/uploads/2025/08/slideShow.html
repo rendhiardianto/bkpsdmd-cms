@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow Gallery with Thumbnails</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      background: #000;
+    }
+
+    .slides {
+      display: none;
+      width: 100%;
+      position: relative;
+    }
+
+    .slides img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    /* Caption text */
+    .caption {
+      color: #f2f2f2;
+      font-size: 18px;
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background: rgba(0,0,0,0.5);
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* Next & prev buttons */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 12px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      transition: 0.3s;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      user-select: none;
+    }
+
+    .next { right: 10px; }
+    .prev { left: 10px; }
+
+    .prev:hover, .next:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    /* Dots */
+    .dots {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 3px;
+      background: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .active, .dot:hover {
+      background: #717171;
+    }
+
+    /* Thumbnail images */
+    .thumbnail-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .thumbnail-row img {
+      width: 120px;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.6;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .thumbnail-row img:hover, .thumbnail-row img.active-thumb {
+      opacity: 1;
+      border: 2px solid #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+  <div class="slides">
+    <img src="https://picsum.photos/id/1015/900/500" alt="Nature 1">
+    <div class="caption">Beautiful Mountain View</div>
+  </div>
+
+  <div class="slides">
+    <img src="https://picsum.photos/id/1025/900/500" alt="Nature 2">
+    <div class="caption">Peaceful Beach</div>
+  </div>
+
+  <div class="slides">
+    <img src="https://picsum.photos/id/1035/900/500" alt="Nature 3">
+    <div class="caption">Misty Forest</div>
+  </div>
+
+  <div class="slides">
+    <img src="https://picsum.photos/id/1045/900/500" alt="Nature 4">
+    <div class="caption">Golden Sunset</div>
+  </div>
+
+  <!-- Navigation arrows -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<!-- Dots -->
+<div class="dots">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+
+<!-- Thumbnail navigation -->
+<div class="thumbnail-row">
+  <img src="https://picsum.photos/id/1015/200/120" onclick="currentSlide(1)">
+  <img src="https://picsum.photos/id/1025/200/120" onclick="currentSlide(2)">
+  <img src="https://picsum.photos/id/1035/200/120" onclick="currentSlide(3)">
+  <img src="https://picsum.photos/id/1045/200/120" onclick="currentSlide(4)">
+</div>
+
+<script>
+  let slideIndex = 1;
+  let slideTimer;
+
+  function showSlides(n) {
+    let slides = document.getElementsByClassName("slides");
+    let dots = document.getElementsByClassName("dot");
+    let thumbs = document.querySelectorAll(".thumbnail-row img");
+
+    if (n > slides.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = slides.length }
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+
+    thumbs.forEach(img => img.classList.remove("active-thumb"));
+
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    thumbs[slideIndex-1].classList.add("active-thumb");
+  }
+
+  function plusSlides(n) {
+    clearInterval(slideTimer);
+    slideIndex += n;
+    showSlides(slideIndex);
+    autoSlide();
+  }
+
+  function currentSlide(n) {
+    clearInterval(slideTimer);
+    slideIndex = n;
+    showSlides(slideIndex);
+    autoSlide();
+  }
+
+  function autoSlide() {
+    slideTimer = setInterval(() => {
+      slideIndex++;
+      if (slideIndex > document.getElementsByClassName("slides").length) { slideIndex = 1 }
+      showSlides(slideIndex);
+    }, 4000); // 4 seconds
+  }
+
+  // Initialize
+  showSlides(slideIndex);
+  autoSlide();
+</script>
+
+</body>
+</html>

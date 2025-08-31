@@ -1,0 +1,212 @@
+body
+{
+	font-family: Bahnschrift;
+	background-size: contain;
+	background:teal;
+	margin: 0px;
+	overflow-x:hidden;
+}
+@font-face
+{
+	font-family:Bahnschrift;
+	src: url(file/Bahnschrift.ttf);
+}
+.header
+{
+	position:fixed;
+	top:0;
+	color: white;
+	width: 100%;
+	background-color: #111;
+	background-size:auto;
+	padding: 10px 0px 10px 20px;
+}
+.header right
+{
+	float:right;
+	margin-right: 40px;
+}
+.sidenav
+{
+	position: fixed;
+	clear:left;
+	float:left;
+    height: 100%;
+    width: 220px;
+    z-index: 1;
+    top: 45px;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 10px;
+}
+.sidenav profil
+{
+	color:white;
+	font-size: 15px;
+}
+.sidenav profil span
+{
+	border-bottom: 1px solid white;
+}
+img
+{
+	border-radius: 10%;
+}
+.sidenav .active
+{
+	background-color: #2196F0;
+}
+.sidenav a span, .dropdown-btn span
+{
+	margin-left: 10px;
+}
+.sidenav a, .dropdown-btn
+{
+    text-decoration: none;
+	font-family: Bahnschrift;
+    font-size: 20px;
+    color: white;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+	padding:10px;
+}
+.sidenav a:hover, .dropdown-btn:hover
+{
+    background-color: #2196F0;
+	transition-duration: 0.4s;
+}
+.active
+{
+    background-color: #2196F0;
+    color: white;
+}
+.dropdown-container
+{
+    display: none;
+    background-color: #262626;
+}
+.dropdown-container a span
+{
+	margin-left: 30px;
+	font-size:15px;
+}
+.dropdown-container a:hover
+{
+	background-color: #FF9600;
+	transition-duration: 0.4s;
+}
+.fa-caret-down
+{
+    float: right;
+    padding-right: 8px;
+}
+@media screen and (max-height: 450px)
+{
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+.main
+{
+    margin: 45px 0px 30px 226px;
+	background:white;
+}
+/*-------------------------------------HOME---------------------------------------------------------*/
+.sampul
+{
+	width: 100%;
+	height: 185px;
+	background-image:url(images/index_pict/sampul.jpg);
+	background-size: 100% auto;
+	padding-top: 40px;
+	text-align: center;
+	font-size:40px;
+	color: white;
+}
+.main timeline
+{
+  background-color:#FF9600; 
+  text-align:center;
+  height: 23px;
+  float: left;
+  color: white;
+  padding:15px;
+  font-size: 25px;
+  width:100%;
+}
+
+.content artikel1
+{
+	padding: 20px 20px 0px 15px;
+	clear: left;
+	float: left;
+	background-image:url(images/index_pict/1.jpg);
+	background-size: 100% auto;
+	width:98%;
+	text-align:justify;
+	height:500px;
+	color: white;
+	font-size:25px;
+}
+.content artikel1 span
+{
+	float: left;
+	font-size:50px;
+	width: 100%;
+}
+.content artikel2
+{
+	clear: left;
+	float: left;
+	color: teal;
+	font-size:20px;
+	padding:20px 0px 0px 15px;
+	width: 100%;
+	background-color: white;
+}
+.content artikel2 table tr th
+{
+	font-size:50px;
+}
+.content artikel2 table tr td
+{
+	line-height:2.0;
+	vertical-align:top;
+}
+.content artikel3
+{
+	clear: left;
+	float: left;
+	background-image:url(images/index_pict/2.jpg);
+	background-size: 100% auto;
+	width: 100%;
+	height:550px;
+	color:white;
+	font-size:20px;
+	padding: 20px 0px 0px 15px;
+}
+.content artikel3 span
+{
+	float: left;
+	font-size:50px;
+	width: 100%;
+}
+/*----------------------------------------------------------------------------------------------------*/
+.footer
+{
+	border-top: 5px solid teal;
+	position: fixed;
+	bottom:0;
+	text-align:center;
+	background:#111;
+	color: white;
+	width:100%;
+	height: 30px;
+	font-size:15px;
+	padding-top:5px;
+}

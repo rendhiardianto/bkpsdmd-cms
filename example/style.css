@@ -1,0 +1,107 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background: #2c3e50;
+      color: white;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      flex-wrap: wrap; /* ✅ lets menu drop on mobile */
+    }
+
+    .navbar h2 {
+      margin: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin-left: auto; /* ✅ pushes to right on desktop */
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 10px 15px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: #34495e;
+    }
+
+    /* Dropdown */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #34495e;
+      min-width: 180px;
+      z-index: 1000;
+      flex-direction: column;
+    }
+
+    .dropdown a {
+      padding: 10px;
+    }
+
+    .nav-links li:hover .dropdown {
+      display: flex;
+    }
+
+    /* Mobile */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #2c3e50;
+        margin-left: 0; /* reset */
+      }
+
+      .nav-links.show {
+        display: flex; /* ✅ drops BELOW logo */
+      }
+
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+      }
+
+      .dropdown {
+        position: static;
+      }
+
+      /* disable hover on mobile */
+      .nav-links li:hover .dropdown {
+        display: none;
+      }
+
+      .nav-links li.open .dropdown {
+        display: flex;
+      }
+    }

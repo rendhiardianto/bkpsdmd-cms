@@ -1,0 +1,188 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+   font-family: Trebuchet;
+   src: url("file/Font/Trebuchet.ttf");
+}
+@font-face {
+   font-family:Bahnschrift;
+   src: url("file/Font/Bahnschrift.ttf");
+}
+@font-face {
+   font-family: BebasNeue;
+   src: url("file/Font/BebasNeue.otf");
+}
+@font-face {
+   font-family: Raleway-Light;
+   src: url("file/Font/Raleway-Light.ttf");
+}
+@font-face {
+   font-family: Raleway-Medium;
+   src: url("file/Font/Raleway-Medium.ttf");
+}
+@font-face {
+   font-family: FreeHand;
+   src: url("file/Font/FreeHand.ttf");
+}
+@font-face {
+   font-family: SegoeUI;
+   src: url("file/Font/segoeui.ttf");
+}
+
+body {
+	margin: 0;
+}
+.content a{
+    float: left;
+    padding-left: 20px;
+    padding-top: 15px;
+    font-family: bahnschrift;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+.content h2{
+    font-family: bahnschrift;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    background-color: #00b4d8;
+    padding: 20px;
+    margin: auto;
+}
+
+.content p {
+    text-align: justify;
+    font-family: bahnschrift;
+    font-size: 20px;
+    padding-left: 10px;
+}  
+.flex-container-main {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.flex-one {
+    background-color: #f1f1f1;
+    font-size: 20px;
+    font-family: bahnschrift;
+    text-align: center;
+    padding-bottom: 20px;
+    
+}
+.flex-two {
+    background-color: #e6d6d6;
+    font-size: 20px;
+    font-family: bahnschrift;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.flex-three {
+    background-color: #f1f1f1;
+    font-size: 20px;
+    font-family: bahnschrift;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+  .content a{
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    font-family: bahnschrift;
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+}
+.content h2{
+    font-family: bahnschrift;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background-color: #00b4d8;
+    padding: 20px;
+    margin: auto;
+}
+
+.content p {
+    text-align: justify;
+    font-family: bahnschrift;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+} 
+}
+/*============================ FOOTER ============================*/
+* {
+	box-sizing: border-box;
+}
+.column {
+	overflow: hidden;
+	float: left;
+	padding: 10px;
+	background-color: #0096c7;
+	color: white;
+	height: 260px;
+	font-family: Raleway-Medium;
+	font-size: 15px;
+}
+.first{
+	width: 22.5%;
+} 
+.first img {
+	width: 100%;
+}
+
+.second {
+ 	width: 35%;
+	text-align: left;
+	background-color: #00b4d8;
+	color: white;
+}
+.second img{
+	width: 40px;
+	margin-right: 10px;
+}
+
+.third {
+  width: 20%;
+  background-color: #0096c7;
+}
+.third img {
+	width: 40px;
+	margin-left: 5px;
+	padding-bottom: 20px;
+}
+
+.fourth {
+	width: 22.5%;
+	background-color: #00b4d8;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+.fourth p {
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.fourth img{
+	margin-left: 10%;
+	width: 80%;
+}
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 800px) {
+  .first, .second, .third, .fourth {
+	  width: 100%;
+	  height: auto;
+	}
+	.first img{
+		width: 70%;
+		margin-left: 10%;
+	} .fourth img 
+	{
+		width: 70%;
+		margin-left: 15%;
+	}
+}

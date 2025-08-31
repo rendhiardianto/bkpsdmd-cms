@@ -1,0 +1,391 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+   font-family: Trebuchet;
+   src: url("file/Font/Trebuchet.ttf");
+}
+@font-face {
+   font-family:Bahnschrift;
+   src: url("file/Font/Bahnschrift.ttf");
+}
+@font-face {
+   font-family: BebasNeue;
+   src: url("file/Font/BebasNeue.otf");
+}
+@font-face {
+   font-family: Raleway-Light;
+   src: url("file/Font/Raleway-Light.ttf");
+}
+@font-face {
+   font-family: Raleway-Medium;
+   src: url("file/Font/Raleway-Medium.ttf");
+}
+@font-face {
+   font-family: FreeHand;
+   src: url("file/Font/FreeHand.ttf");
+}
+@font-face {
+   font-family: SegoeUI;
+   src: url("file/Font/segoeui.ttf");
+}
+
+body {
+	margin: 0;
+}
+/* =================================== TOP NAV =========================================*/
+.header {
+
+}
+.topnav {
+  position: sticky;
+  top: 0;
+  background-color: #0077b6;
+  height: 65px;
+  box-shadow: 0px 2px 10px 0px black;
+  font-family: Trebuchet;
+}
+.navLogo{
+	float: left;
+}
+.navLogo #bkpsdmdLogo {
+	height: 45px;
+	padding-top: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.navRight {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	background-color: #0077b6;
+	box-shadow: 0px 2px 10px 0px black;
+}
+.navRight a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 25px 20px 20px 20px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a.active {
+  background-color: white;
+  color: black;
+}
+
+.topnav .icon {
+	display: none;
+	padding: 20px 20px 20px 20px;
+}
+
+.dropdown {
+  float: left;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 24px 20px 20px 20px;
+  background-color: inherit;
+  font-family: inherit;
+}
+
+.dropdown-content {
+  
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 5px 10px 0px black;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+#menu1
+{
+	transition-timing-function: ease;
+}
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 15px; 
+  min-width: 160px;
+}
+
+.navRight a:hover, .dropdown:hover .dropbtn {
+  background-color: white;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content{}
+.dropdown .dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.show {
+	display: block;
+}
+@media screen and (max-width: 1050px) {
+  .navRight a:not(:empty), .dropdown .dropbtn { 
+	  display: none;
+	}
+  .topnav a.icon {
+	float: right;
+    display: block;
+	top: 0;
+  }
+.show {
+	display: block;
+}
+}
+
+@media screen and (max-width: 1050px) {
+  .topnav.responsive {
+	  position: sticky;
+	  float: left;
+	  width: 100%;
+	}
+  .topnav.responsive .icon {
+	position: absolute;
+	right: 0;
+	top:0;
+  }
+	.topnav.responsive .navRight {
+		padding-top: 70px;
+	}
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {
+	  float: none;
+	}
+  .topnav.responsive .dropdown-content {
+	  position: relative;
+	}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+/* ============================================ Layanan BKD ==============================*/
+.layananBKD {
+	background-color: white;
+	overflow: hidden;
+	text-align: center;
+	padding: 20px;
+}
+.layananBKD h1 {
+	font-family: Bahnschrift;
+	text-align: center;
+	font-size: 40px;
+	color: #0077b6;
+	margin-top: 0px;
+}
+.layananBKD .layananKPG {
+	margin-top: 20px;
+}
+.layananBKD .layananPSDM {
+	margin-top: 50px;
+}
+.LogoBKD {
+	width: 200px;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 600px) {
+	.layananBKD h1{
+		font-family: Bahnschrift;
+		text-align: center;
+		font-size: 25px;
+		color: #0077b6;
+	}
+	.LogoBKD {
+		width: 150px;
+	}
+}
+
+/* ============================================ Layanan BKN ==============================*/
+.layananBKN {
+	background-color: white;
+	/*background-image: url(images//index_pict/1.jpg);
+	background-size: cover;*/
+	overflow: hidden;
+	text-align: center;
+	padding: 20px;
+}
+.layananBKN h1{
+	font-family: Bahnschrift;
+	text-align: center;
+	font-size: 40px;
+	color: #0077b6;
+}
+.LogoBKN {
+	width: 200px;
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 600px) {
+	.layananBKN h1{
+		font-family: Bahnschrift;
+		text-align: center;
+		font-size: 30px;
+		color: #0077b6;
+	}
+	.LogoBKN {
+		width: 150px;
+	}
+}
+
+/* ============================================ FLEX CONTAINER ==============================*/
+* {
+  box-sizing: border-box;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
+.flex-container > div {
+ margin: 0;
+ background-color: #dddddd;
+ color: #023e8a;
+ line-height: 20px;
+ font-family: trebuchet;
+ font-size: 20px;
+ margin: 10px;
+ border-radius: 12px;
+ box-shadow: 0px 5px 5px grey;
+}
+.flex-container > div:hover {
+	background-color:  white;
+	box-shadow: 0px 5px 15px grey;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.flex-item-main {
+  flex: 20%;
+}
+.flex-item-main img {
+	
+}
+.flex-item-main img:hover {
+	filter: invert(50%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(80%);
+	transition: 0.3s;
+}
+.flex-item-one {
+  flex: 20%;
+}
+.flex-item-two {
+  flex: 20%;
+}
+.flex-item-three {
+  flex: 20%;
+}
+.flex-item-four {
+  flex: 20%;
+}
+
+.flex-item-main sub, .flex-item-one sub, .flex-item-two sub, .flex-item-three sub, .flex-item-four sub {
+	color: rgb(41, 40, 40);
+	line-height: 0.1;
+	font-size: 15px;
+	padding: 5px;
+}
+/* Responsive layout - makes a one column-layout instead of a two-column layout */
+@media (max-width: 600px) {
+  .flex-item-main, .flex-item-one, .flex-item-two, .flex-item-three, .flex-item-four {
+    flex: 40%;
+  }
+}
+@media (max-width: 800px) {
+  .flex-item-main, .flex-item-one, .flex-item-two, .flex-item-three, .flex-item-four {
+    flex: 30%;
+  }
+}
+/* =================================== FOOTER =========================================*/
+* {
+	box-sizing: border-box;
+}
+.column {
+	overflow: hidden;
+	float: left;
+	padding: 10px;
+	background-color: #0096c7;
+	color: white;
+	height: 260px;
+	font-family: Raleway-Medium;
+	font-size: 15px;
+}
+.first{
+	width: 22.5%;
+} 
+.first img {
+	width: 100%;
+}
+
+.second {
+ 	width: 35%;
+	text-align: left;
+	background-color: #00b4d8;
+	color: white;
+}
+.second img{
+	width: 40px;
+	margin-right: 10px;
+}
+
+.third {
+  width: 20%;
+  background-color: #0096c7;
+}
+.third img {
+	width: 40px;
+	margin-left: 5px;
+	padding-bottom: 20px;
+}
+
+.fourth {
+	width: 22.5%;
+	background-color: #00b4d8;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+.fourth p {
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.fourth img{
+	margin-left: 10%;
+	width: 80%;
+}
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 800px) {
+  .first, .second, .third, .fourth {
+	  width: 100%;
+	  height: auto;
+	}
+	.first img{
+		width: 70%;
+		margin-left: 10%;
+	} .fourth img 
+	{
+		width: 70%;
+		margin-left: 15%;
+	}
+}

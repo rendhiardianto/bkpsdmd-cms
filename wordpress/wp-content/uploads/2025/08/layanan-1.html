@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-65T4XSDM2Q"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-65T4XSDM2Q');
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<link href="/CSS/topnav.css" rel="stylesheet" type="text/css">
+<link href="/CSS/footer.css" rel="stylesheet" type="text/css">
+<link href="layanan.css" rel="stylesheet" type="text/css">
+
+<title>BKPSDMD Kabupaten Merangin</title>
+<link rel="shortcut icon" href="icon/IconWeb.png">
+</head>
+
+<body>
+	
+<div class="topnav" id="mynavBtn">
+	
+	<div class="navLogo">
+		<a href="index.html"><img src="icon/BKPLogo3.png" id="bkpsdmdLogo" alt="Logo BKPSDMD"></a>	
+	</div>
+	
+	<div class="navRight" >
+		
+		<div class="dropdown" class="active">
+			<button onclick="toggleDropdown('menu1')" class="dropbtn">PROFIL <i class="fa fa-caret-down"></i></button>
+		  <div id="menu1" class="dropdown-content">
+			<a href="profil.html#visiMisi">Visi dan Misi</a>
+			<a href="profil.html#selaPang">Selayang Pandang</a>
+			<a href="profil.html#sejarah">Sejarah</a>
+			<a href="profil.html#strukOrga">Struktur Organisasi</a>
+			<a href="profil.html#tuPoksi">Tugas Pokok dan Fungsi</a>
+		  </div>
+		</div>
+		
+		<div class="dropdown">
+			<button onclick="toggleDropdown('menu2')" class="dropbtn">BERITA <i class="fa fa-caret-down"></i></button>
+		  <div id="menu2" class="dropdown-content">
+			<a href="berita.html#terkini">Berita Terkini</a>
+			<a href="berita.html#agenda">Agenda Kegiatan</a>
+		  </div>
+		</div>
+		
+		<a href="layanan.html">LAYANAN</a>
+		
+		<div class="dropdown">
+			<button onclick="toggleDropdown('menu3')" class="dropbtn">TRANSPARANSI <i class="fa fa-caret-down"></i></button>
+		  <div id="menu3" class="dropdown-content">
+			<a href="transparansi.html#renstra">Rencana Stategis</a>
+			<a href="transparansi.html#renja">Rencana Kerja</a>
+			<a href="transparansi.html#iku">Indikator Kinerja Utama</a>
+			<a href="transparansi.html#casscad">Casscading</a>
+			<a href="transparansi.html#perkin">Perjanjian Kinerja</a>
+			<a href="transparansi.html#reaksi">Rencana Aksi</a>
+			<a href="transparansi.html#lapkin">Laporan Kinerja</a>
+			<a href="transparansi.html#sop">Standar Operasional Prosedur</a>
+			<a href="transparansi.html#rapbd">RAPBD</a>
+			<a href="transparansi.html#apbd">APBD</a>
+			<a href="transparansi.html#lppd">LPPD</a>
+		  </div>
+		</div>
+		
+		<a href="ppid.html">P.P.I.D.</a>
+		
+		<div class="dropdown">
+			<button onclick="toggleDropdown('menu4')" class="dropbtn">GALERI <i class="fa fa-caret-down"></i></button>
+		  <div id="menu4" class="dropdown-content">
+			<a href="galeri.html#foto">Album Foto</a>
+			<a href="galeri.html#video">Album Video</a>
+			<a href="galeri.html#tempMm">Template Multimedia BKPSDMD</a>
+		  </div>
+		</div>
+		
+		<a href="pengumuman.html">PENGUMUMAN</a>
+		<!--<a href="javascript:void(0);" class="icon" onclick="myFunction()"> <i class="fa fa-bars"></i> </a>-->
+		<a href="javascript:void(0);" style="font-size:17px;" class="icon" onclick="myFunction()">&#9776;</a>
+	</div>
+</div>
+	
+<!------------------------------------------ CONTENT ----------------------------------->
+
+<div class="layananBKD">
+
+    <h1 class="layananKPG" id="kpg">Layanan Kepegawaian <img src="icon/BKPLogo3.png" class="LogoBKD" style="vertical-align:middle"></h1>
+    
+    <div class="flex-container">
+
+        <div class="flex-item-main">
+            <p><a href="https://asndigital.bkn.go.id/" target="_blank" >
+            <img src="icon/Kepegawaian/karpeg.png" width="100"></a><br>KARTU PEGAWAI<br><sub>Pembuatan Karpeg</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+        <p><a href="https://asndigital.bkn.go.id/" target="_blank" >
+        <img src="icon/Kepegawaian/karsu.png" width="100px"></a><br>KARTU SUAMI/ISTRI<br><sub>Pembuatan Karsu/Karsi</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+            <p><a href="/images/LayananKPG/gajiBerkala.PNG" target="_blank" >
+            <img src="icon/Kepegawaian/gaji.png" width="100px"></a><br>GAJI BERKALA<br><sub>Persyaratan Kenaikan Gaji Berkala</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+            <p><a href="/images/LayananKPG/jabatanPelaksana.PNG" target="_blank" >
+            <img src="icon/Kepegawaian/pelaksana.png"width="100px"></a><br>MUTASI JABATAN PELAKSANA<br><sub>Persyaratan Mutasi Jabatan Pelaksana</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+            <p><a href="/images/LayananKPG/jabatanFungsi.PNG" target="_blank" >
+            <img src="icon/Kepegawaian/fungsional.png" width="100px"></a><br>KENAIKAN JABATAN FUNGSIONAL<br><sub>Persyaratan Kenaikan Jabatan Fungsional</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+            <p><a href="/images/LayananKPG/mutasi.PNG" target="_blank" >
+            <img src="icon/Kepegawaian/mutasi.png" width="100px"></a><br>MUTASI<br><sub>Persyaratan Permohonan Mutasi</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+            <p><a href="/images/LayananKPG/PERSYARATAN KENAIKAN PANGKAT 2025.pdf" target="_blank" >
+            <img src="icon/Kepegawaian/kp.png" width="100px"></a><br>KENAIKAN PANGKAT<br><sub>Persyaratan Kenaikan Pangkat</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+            <p><a href="/images/LayananKPG/gelarPendidikan.PNG" target="_blank" >
+            <img src="icon/Kepegawaian/gelar.png" width="100px"></a><br>PEMAKAIAN GELAR PENDIDIKAN<br><sub>Persyaratan Pemakaian Gelar Pendidikan PNS</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+            <p><a href="/images/LayananKPG/pmk.PNG" target="_blank" >
+            <img src="icon/Kepegawaian/pmk.png" width="100px"></a><br>PENINJAUAN MASA KERJA (PMK)<br><sub>Persyaratan Peninjauan Masa Kerja</sub></p>
+        </div>
+
+        <div class="flex-item-main">
+            <p><a href="/images/LayananKPG/SYARAT PENSIUN.pdf" target="_blank" >
+            <img src="icon/Kepegawaian/pensiun.png" width="100px"></a><br>PENSIUN<br><sub>Persyaratan Pengajuan Pensiun</sub></p>
+        </div>
+    </div>
+
+    <h1 class="layananPSDM" id="psdm">Layanan Pengembangan SDM <img src="icon/BKPLogo3.png" class="LogoBKD" style="vertical-align:middle"></h1>
+    <div class="flex-container">
+
+        <div class="flex-item-main"><p><a href="#" target="_blank" >
+        <img src="icon/PSDM/tapera.png" width="100px"></a><br>TAPERA<br><sub>Permohonan Pengajuan TAPERA</sub></p>
+        </div>
+
+        <div class="flex-item-main"><p><a href="#" target="_blank" >
+        <img src="icon/PSDM/cerai.png" width="100px"></a><br>IZIN PERCERAIAN<br><sub>Permohonan Pengajuan Izin Cerai</sub></p>
+        </div>
+
+        <div class="flex-item-main"><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfpoV6Utd9lg3KWp-nV3JX29kooy4i-g3liowmISEnUAvUMCg/viewform" target="_blank" >
+        <img src="icon/PSDM/tubel.png" width="100px"></a><br>TUGAS BELAJAR<br><sub>Permohonan Pengajuan Tubel</sub></p>
+        </div>
+
+        <div class="flex-item-main"><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeP28qWj-p13n_71Uc4OgocsIH5tvFv5AoroTAl4BKuSSfUQw/viewform" target="_blank" >
+        <img src="icon/PSDM/satya.png" width="100px"></a><br>SATYALANCANA<br><sub>Permohonan Usul Satyalancana</sub></p>
+        </div>
+
+        <div class="flex-item-main"><p><a href="#" target="_blank" >
+        <img src="icon/PSDM/disiplin.png" width="100px"></a><br>HUKUMAN DISIPLIN<br><sub>Permohonan Bebas Hukuman Disiplin</sub></p>
+        </div>
+
+        <div class="flex-item-main"><p><a href="#" target="_blank" >
+        <img src="icon/PSDM/ujiandinas.png" width="100px"></a><br>UJIAN DINAS<br><sub>Informasi Mengenai Ujian Dinas</sub></p>
+        </div>
+
+        <div class="flex-item-main"><p><a href="https://bioqu.id/SICUTI" target="_blank" >
+        <img src="icon/PSDM/sakit.png" width="100px"></a><br>CUTI<br><sub>Permohonan Cuti</sub></p>
+        </div>
+
+        <div class="flex-item-main"><p><a href="historyDiklat.html">
+        <img src="icon/PSDM/diklat.png" width="100px"></a><br>DIKLAT<br><sub>Informasi Mengenai Diklat</sub></p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="layananBKN">
+
+	<h1>Layanan <img src="icon/BKN/LogoBKN.png" class="LogoBKN" style="vertical-align:middle"></h1>
+	
+	<div class="flex-container">
+
+		<div class="flex-item-one"><p><a href="https://asndigital.bkn.go.id/" target="_blank" class="asndigital">
+		<img src="icon/BKN/LogoBKN2.png" alt="Logo BKN" width="50px"></a><br>ASN DIGITAL<br><sub>Portal ASN Digital</sub></p>
+		</div>
+
+		<div class="flex-item-two"><p><a href="https://myasn.bkn.go.id/" target="_blank" class="myasn">
+		<img src="icon/BKN/MyASN.png" alt="Logo BKN" width="150px"></a><br>MyASN BKN<br><sub>Sistem Kepegawaian Bagi ASN</sub></p>
+		</div>
+
+		<div class="flex-item-three"><p><a href="https://kinerja.bkn.go.id/" target="_blank" class="ekinerja">
+		<img src="icon/BKN/E-Kinerja.png" alt="Logo BKN" width="150px"></a><br>E-KINERJA BKN<br><sub>Sistem Penilaian Kinerja BKN</sub></p>
+		</div>
+
+		<div class="flex-item-four"><p><a href="https://siasn-instansi.bkn.go.id/" target="_blank" class="siasn">
+		<img src="icon/BKN/SIASN.png" alt="Logo BKN" width="150px"></a><br>SIASN BKN<br><sub>Sistem Informasi ASN Pemerintah Daerah</sub></p>
+		</div>
+
+		<div class="flex-item-one"><p><p><a href="https://perencanaan-siasn.bkn.go.id/" target="_blank" class="hrsiasn">
+		<img src="icon/BKN/SIASN.png" alt="Logo BKN" width="150px"></a><br>HR SIASN<br><sub>Perencanaan Kebutuhan ASN</sub></p>
+		</div>
+
+		<div class="flex-item-two"><p><a href="https://imut.bkn.go.id/" target="_blank" class="imutbkn">
+		<img src="icon/BKN/IMut.png" alt="Logo BKN" width="150px"></a><br>I-MUT BKN<br><sub>Integrasi Mutasi ASN</sub></p>
+		</div>
+
+		<div class="flex-item-three"><p><a href="https://sscasn.bkn.go.id/" target="_blank" class="imutbkn">
+		<img src="icon/BKN/SSCASN.png" alt="Logo BKN" width="150px"></a><br>SSCASN BKN<br><sub>Sistem Seleksi Calon Aparatur Sipil Negara</sub></p>
+		</div>
+
+	</div>
+
+</div>
+
+<!------------------- FOOTER ----------------------------------->	
+	
+<div class="row">
+  <div class="column first">
+		<img src="icon/BKPLogo.png" alt="Logo BKPSDMD">
+	  <p style="text-align: center">Copyright © 2025.</p>
+	  <p style="text-align: center">Badan Kepegawaian dan Pengembangan Sumber Daya Manusia Daerah (BKPSDMD) Kabupaten Merangin.</p> 
+	  <p style="text-align: center">All Rights Reserved</p>
+  </div>
+	
+  <div class="column second">
+		<h3>Butuh Bantuan?</h3>
+	  
+		<p><a href="https://maps.app.goo.gl/idAZYTHVszUhSGRv8" target="_blank" class="Loc">
+			<img src="icon/sosmed/Loc.png" alt="Logo Loc" width="30px" style="float: left"></a> 
+			Jl. Jendral Sudirman, No. 01, Kel. Pematang Kandis, Kec. Bangko, Kab. Merangin, Prov. Jambi - Indonesia | Kode Pos - 37313</p>
+	  
+		<p><a href="https://wa.me/6285159997813" target="_blank" class="wa">
+			<img src="icon/sosmed/WA.png" alt="Logo WA" width="30px" style="vertical-align:middle"></a> 
+			+62851 5999 7813</p>
+	  
+		<p><a href="https://wa.me/6285159997813" target="_blank" class="em">
+			<img src="icon/sosmed/EM.png" alt="Logo Email" width="30px" style="vertical-align:middle"></a> 
+			bkd.merangin@gmail.com</p>
+  </div>
+	
+  <div class="column third">
+		<h3>Follow Sosial Media Kami!</h3>
+		  <a href="https://www.instagram.com/bkpsdmd.merangin/?hl=en" target="_blank" class="ig"><img src="icon/sosmed/IG.png" alt="Logo IG"></a>
+	  
+		  <a href="https://www.youtube.com/@bkpsdmd.merangin" target="_blank" class="yt"><img src="icon/sosmed/YT.png" alt="Logo YT"></a>
+	  
+		  <a href="https://www.facebook.com/bkpsdmd.merangin/" target="_blank" class="fb"><img src="icon/sosmed/FB.png" alt="Logo FB"></a>
+	  
+		  <a href="https://x.com/bkpsdmdmerangin?t=a7RCgFHif89UfeV9aALj8g&s=08" target="_blank" class="x"><img src="icon/sosmed/X.png" alt="Logo X"></a>
+	  
+		  <a href="https://www.tiktok.com/@bkpsdmd.merangin?_t=ZS-8z3dFdtzgYy&_r=1 " target="_blank" class="tt"><img src="icon/sosmed/TT.png" alt="Logo TT"></a>
+  </div>
+  <div class="column fourth">
+		<h3>Kunjungan Website</h3>
+		<p>Hari Ini</p>
+		<p>Total</p>
+	  
+	  	
+	  <img src="icon/BerAkhlak.png" alt="Logo BerAkhlak">
+	  
+  </div>
+</div>
+
+<!--<script> <h3 id="visitor-count">Loading...</h3>
+  fetch("counter.php")
+    .then(res => res.text())
+    .then(count => {
+      document.getElementById("visitor-count").innerText = count;
+    });
+</script> -->
+	
+<!------------------- BATAS AKHIR CONTENT ---------------------------------->
+	
+<script src="JavaScript/script.js"></script>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
+</script>
+</body>
+</html>

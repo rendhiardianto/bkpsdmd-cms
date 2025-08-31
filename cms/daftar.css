@@ -1,0 +1,185 @@
+@font-face
+{
+	font-family:Bahnschrift;
+	src: url(file/Bahnschrift.ttf);
+}
+@font-face
+{
+	font-family:Trebuchet;
+	src: url(file/Trebuchet.ttf);
+}
+.wrapper
+{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-image: url(images/index_pict/gerbangunja.jpg);
+	background-size: 100% auto;
+	font-family: Bahnschrift;
+}
+.wrapper header
+{
+	width:100%;
+	height: 65px;
+	background-color: #1E1E1E;
+}
+header logo
+{
+	float: left;
+	color: white;
+	font-size: 40px;
+	padding: 10px;
+	font-family:Bahnschrift;
+}
+header tombol
+{
+	float:right;
+	font-size: 20px;
+	color:white;
+	padding:20px;
+}
+main
+{
+	padding: 45px 0px 30px 30px;
+	font-family: Bahnschrift;
+	color: white;
+}
+main h2
+{
+	float:left;
+	margin-top:150px;
+	margin-left: 50px;
+}
+main notif
+{
+	font-size: 20px;
+	color: #FF8600;
+}
+main table
+{
+	margin-left: 490px;
+	padding:10px;
+	background-color: #1E1E1E;
+	font-size: 20px;
+}
+main table b
+{
+	font-size: 30px;
+}
+.wrapper footer
+{
+	position: fixed;
+	bottom: 0;
+	width:100%;
+	color: white;
+	font-family:Bahnschrift;
+	padding-top:10px;
+	background-color: #1E1E1E;
+}
+.wrapper footer table
+{
+	width:100%;
+	text-align:center;
+	font-size:18px;
+	padding-bottom:5px;
+}
+a
+{
+	text-decoration:none;
+	color:inherit;
+	margin-right: 30px;
+}
+/*--------------------------------------------------------------------------------------------------*/
+main input[type=file]
+{
+	margin-top:10px;
+	background: #FF8E00;
+	color: white;
+	font-family: Bahnschrift;
+	font-size: 15px;
+	padding: 6px;
+}
+main input[type=text]
+{
+ 	margin-right: 10px;
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid white;
+	color: white;
+	font-family: Bahnschrift;
+	font-size: 15px;
+	padding: 6px;
+
+}
+main input[type=email]
+{
+ 	margin-right: 20px;
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid white;
+	color: white;
+	font-family: Bahnschrift;
+	font-size: 15px;
+	padding: 6px;
+
+}
+main input[type=password]
+{
+	margin-right: 20px;
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid white;
+	color: white;
+	font-family: Bahnschrift;
+	font-size: 15px;
+	padding: 6px;
+}
+
+main input[type=submit]
+{
+	width:250px;
+	height: 50px;
+	background: #FF8E00;
+	border: none;
+	cursor: pointer;
+	color: white;
+	font-family: Bahnschrift;
+	font-size: 20px;
+	font-weight: 400;
+	padding: 6px;
+	margin:20px;
+}
+
+main input[type=submit]:hover{
+	opacity: 0.8;
+}
+
+main input[type=text]:focus{
+	outline: none;
+	border: 1px solid #FFC600;
+}
+main input[type=email]:focus{
+	outline: none;
+	border: 1px solid #FFC600;
+}
+main input[type=password]:focus{
+	outline: none;
+	border: 1px solid #FFC600;
+}
+
+main input[type=submit]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color: rgba(255,255,255,0.8);
+}
+
+::-moz-input-placeholder{
+   color: #FFC600;
+}
