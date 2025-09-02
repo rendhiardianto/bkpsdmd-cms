@@ -1,8 +1,8 @@
 <?php
 $db_host = "localhost";
-$db_user = "id6539493_ehomeauto";
-$db_pass = "6996Iwasborn";
-$db_name = "id6539493_ehome";
+$db_user = "Admin";
+$db_pass = "";
+$db_name = "bkpsdmd_db";
 try
 {    
     //create PDO connection 

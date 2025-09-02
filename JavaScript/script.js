@@ -9,18 +9,14 @@ function myFunction() {
 }
 
 //DROPDOWN BUTTONS----------------------------------------------
-    function toggleDropdown(menuId) {
+ function toggleDropdown(menuId) {
       // Close all other dropdowns
       document.querySelectorAll(".dropdown-content").forEach(menu => {
         if (menu.id !== menuId) {
           menu.classList.remove("show");
         }
       });
-
-      // Toggle the clicked one
-      document.getElementById(menuId).classList.toggle("show");
     }
-
     // Close dropdown if clicking outside
     window.onclick = function(event) {
       if (!event.target.matches('.dropbtn')) {
@@ -29,6 +25,17 @@ function myFunction() {
         });
       }
     }
+    // Mobile: toggle dropdown on click
+    document.querySelectorAll(".dropbtn").forEach(toggle => {
+      toggle.addEventListener("click", function(e) {
+        // Only work on small screens
+        if (window.innerWidth < 768) {
+          e.preventDefault();
+          const dropdown = this.nextElementSibling;
+          dropdown.classList.toggle("show");
+        }
+      });
+    });
 
     // INFOGRAPHIS SLIDESHOW----------------------------------------------
 var myIndex = 0;

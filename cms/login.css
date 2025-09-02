@@ -31,6 +31,7 @@
 body{
 	margin:0;
 }
+
 .wrapper
 {
 	position: fixed;
@@ -38,7 +39,7 @@ body{
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
-	background-image: url(images/index_pict/gerbangunja.jpg);
+	background-image: url(images/index_pict/kampusupm.jpg);
 	background-size: 100% auto;
 	font-family: Bahnschrift;
 }
@@ -63,33 +64,36 @@ header tombol
 	color:white;
 	padding:20px;
 }
-main
+.wrapper main table
 {
-	padding: 45px 0px 30px 30px;
-	font-family: Bahnschrift;
+	margin-top: 80px;
+	margin-left:25%;
+	width:74.5%;
 	color: white;
+	font-family:Bahnschrift;
 }
-main h2
+.wrapper main table c
 {
-	float:left;
-	margin-top:150px;
-	margin-left: 50px;
+	font-size:30px;	
 }
-main notif
+.wrapper main table tr td b
 {
-	font-size: 20px;
-	color: #FF8600;
+	font-size: 65px;
+	font-family:Trebuchet;
+	line-height:0.5;
 }
-main table
+.wrapper main table tr td span
 {
-	margin-left: 490px;
-	padding:10px;
-	background-color: #1E1E1E;
-	font-size: 20px;
+	font-size:20px;
+	font-family:Bahnschrift;
 }
-main table b
+.wrapper main table tr td span a
 {
-	font-size: 30px;
+	text-decoration:underline;
+}
+.wrapper main table tr td
+{
+	padding:30px;
 }
 .wrapper footer
 {
@@ -98,8 +102,6 @@ main table b
 	width:100%;
 	color: white;
 	font-family:Bahnschrift;
-	padding-top:10px;
-	background-color: #1E1E1E;
 }
 .wrapper footer table
 {
@@ -107,6 +109,8 @@ main table b
 	text-align:center;
 	font-size:18px;
 	padding-bottom:5px;
+	padding-top:10px;
+	background-color: #1E1E1E;
 }
 a
 {
@@ -114,68 +118,49 @@ a
 	color:inherit;
 	margin-right: 30px;
 }
-/*--------------------------------------------------------------------------------------------------*/
-main input[type=file]
-{
-	margin-top:10px;
-	background: #FF8E00;
-	color: white;
-	font-family: Bahnschrift;
-	font-size: 15px;
-	padding: 6px;
-}
+/*---------------------------------------------------------------------------------------------------*/
 main input[type=text]
 {
- 	margin-right: 10px;
-	width: 250px;
+	width: 285px;
 	height: 30px;
 	background: transparent;
 	border: 1px solid white;
 	color: white;
-	font-family: Bahnschrift;
 	font-size: 15px;
+	font-weight: 400px;
 	padding: 6px;
-
+	margin-top: 10px;
+	font-family:Bahnschrift;
 }
-main input[type=email]
-{
- 	margin-right: 20px;
-	width: 250px;
-	height: 30px;
-	background: transparent;
-	border: 1px solid white;
-	color: white;
-	font-family: Bahnschrift;
-	font-size: 15px;
-	padding: 6px;
 
-}
 main input[type=password]
 {
-	margin-right: 20px;
-	width: 250px;
+	width: 285px;
 	height: 30px;
 	background: transparent;
 	border: 1px solid white;
 	color: white;
-	font-family: Bahnschrift;
 	font-size: 15px;
+	font-weight: 400px;
 	padding: 6px;
+	margin-top: 10px;
+	font-family:Bahnschrift;
 }
 
 main input[type=submit]
 {
-	width:250px;
+	width: 300px;
 	height: 50px;
-	background: #FF8E00;
+	background: #2196F0;
 	border: none;
 	cursor: pointer;
+	transition-duration: 0.4s;
 	color: white;
-	font-family: Bahnschrift;
 	font-size: 20px;
 	font-weight: 400;
 	padding: 6px;
-	margin:20px;
+	margin-top: 10px;
+	font-family:Bahnschrift;
 }
 
 main input[type=submit]:hover{
@@ -186,10 +171,7 @@ main input[type=text]:focus{
 	outline: none;
 	border: 1px solid #FFC600;
 }
-main input[type=email]:focus{
-	outline: none;
-	border: 1px solid #FFC600;
-}
+
 main input[type=password]:focus{
 	outline: none;
 	border: 1px solid #FFC600;
@@ -200,9 +182,9 @@ main input[type=submit]:focus{
 }
 
 ::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.8);
+   color: rgba(255,255,255,0.6);
 }
 
 ::-moz-input-placeholder{
-   color: #FFC600;
+   color: rgba(255,255,255,0.6);
 }
