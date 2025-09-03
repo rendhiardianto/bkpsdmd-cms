@@ -3,32 +3,32 @@
 	require_once 'config.php';
 	if(isset($_POST['daftar']))
 	{
-		$imgFile = $_FILES['user_image']['name'];
-		$tmp_dir = $_FILES['user_image']['tmp_name'];
-		$imgSize = $_FILES['user_image']['size'];
+		$imgFile = $_FILES['userPic']['name'];
+		$tmp_dir = $_FILES['userPic']['tmp_name'];
+		$imgSize = $_FILES['userPic']['size'];
 		
 		// filter data yang diinputkan
-		$nama_depan = filter_input(INPUT_POST, 'nama_depan', FILTER_SANITIZE_STRING);
-		$nama_belakang = filter_input(INPUT_POST, 'nama_belakang', FILTER_SANITIZE_STRING);
-		$username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+		$userNama_depan = filter_input(INPUT_POST, 'userNama_depan');
+		$userNama_belakang = filter_input(INPUT_POST, 'userNama_belakang');
+		$userNIP = filter_input(INPUT_POST, 'userNIP');
 		
 		// enkripsi password
-		$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+		$userEmail = filter_input(INPUT_POST, 'userEmail', FILTER_VALIDATE_EMAIL);
 		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		
 		if(empty($imgFile))
 		{
 			$errMSG = "Masukkan Foto Terlebih Dahulu!";
 		}
-		else if(empty($nama_depan))
+		else if(empty($userNama_depan))
 		{
 			$errMSG = "Masukkan Nama Depan Anda!";
 		}
-		else if(empty($username))
+		else if(empty($userNIP))
 		{
-			$errMSG = "Masukkan Nama Pengguna Anda!";
+			$errMSG = "Masukkan NIP Anda!";
 		}
-		else if(empty($email))
+		else if(empty($userEmail))
 		{
 			$errMSG = "Masukkan Email Anda!";
 		}
@@ -38,7 +38,7 @@
 		}
 		else
 		{
-			$upload_dir = 'user_images/'; // upload directory
+			$upload_dir = 'user_image/'; // upload directory
 	
 			$imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
 		
@@ -52,13 +52,13 @@
 			if(in_array($imgExt, $valid_extensions))
 			{			
 				// Check file size
-				if($imgSize < 5000000)
+				if($imgSize < 500000)
 				{
 					move_uploaded_file($tmp_dir,$upload_dir.$images);
 				}
 				else
 				{
-					$errMSG = "Maaf, ukuran file foto Anda terlalu besar, maksimal 5MB.";
+					$errMSG = "Maaf, ukuran file foto Anda terlalu besar, maksimal 500KB.";
 				}
 			}
 			else
@@ -70,16 +70,16 @@
 		// if no error occured, continue ....
 		if(!isset($errMSG))
 		{
-			$stmt = $db->prepare('INSERT INTO register (images, nama_depan, nama_belakang, username, email, password)
-			VALUES(:images, :nama_depan, :nama_belakang, :username, :email, :password)');
+			$stmt = $db->prepare('INSERT INTO usercms (userPic, userNIP, userNama_depan, userNama_belakang, userEmail, password)
+			VALUES(:userPic, :userNIP, :userNama_depan, :userNama_belakang, :userEmail, :email, :password)');
 			
-			$stmt->bindParam(':images',$images);
-			$stmt->bindParam(':nama_depan',$nama_depan);
-			$stmt->bindParam(':nama_belakang',$nama_belakang);
-			$stmt->bindParam(':username',$username);
-			$stmt->bindParam(':email',$email);
+			$stmt->bindParam(':userPic',$userPic);
+			$stmt->bindParam(':userNIP',$userNIP);
+			$stmt->bindParam(':userNama_depan',$userNama_depan);
+			$stmt->bindParam(':userNama_belakang',$userNama_belakang);
+			$stmt->bindParam(':userEmail',$userEmail);
 			$stmt->bindParam(':password',$password);
-			
+
 			if($stmt->execute())
 			{
 				$successMSG = "";
@@ -138,7 +138,7 @@
         <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal">
         	<h2>
             	Upload Foto Profil<br>
-            	<input class="input-group" type="file" name="user_image" accept="image/*"/>
+            	<input class="input-group" type="file" name="userPic" accept="image/*"/>
             </h2>
             	<table width="800">
                     <tr>
@@ -148,16 +148,16 @@
                  <table width="800">
                 	<tr>
                     	<td>Nama Lengkap</td>
-                        <td><input type="text" placeholder="Nama Depan" name="nama_depan"></td>
-                        <td><input type="text" placeholder="Nama Belakang (optional)" name="nama_belakang"></td>
+                        <td><input type="text" placeholder="Nama Depan" name="userNama_depan"></td>
+                        <td><input type="text" placeholder="Nama Belakang (optional)" name="userNama_belakang"></td>
                     </tr>
                     <tr>
-                    	<td>Nama Pengguna</td>
-                        <td><input type="text" placeholder="Nama Pengguna" name="username"></td>
+                    	<td>NIP</td>
+                        <td><input type="text" placeholder="NIP" name="userNIP"></td>
                     </tr>
                     <tr>
                     	<td>Email</td>
-                        <td><input type="email" placeholder="Email Anda" name="email"></td>
+                        <td><input type="email" placeholder="Email Anda" name="userEmail"></td>
                     </tr>
                     <tr>
                     	<td>Buat Sandi</td>

@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS `userCMS` (
+  `userPic` varchar(200) NOT NULL,
+  `userNIP` int(11) NOT NULL,
+  `userNama_depan` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `userNama_belakang` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `userEmail` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `userPassword` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `userTelp` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `userDibuat` datetime NOT NULL,
+  `duserDiubah` datetime NOT NULL)
+  
+  ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+ALTER TABLE `userCMS`
+  ADD PRIMARY KEY (`userNIP`);
+
+ALTER TABLE `userCMS`
+  MODIFY `userNIP` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;

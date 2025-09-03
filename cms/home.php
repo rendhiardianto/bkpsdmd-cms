@@ -11,9 +11,6 @@
 <body>
 <div class="header">
 	<left>
-    <?php
-	
-	?>
 	<?php
     	$tanggal= mktime(date("m"),date("d"),date("Y"));
 		echo "Date : ".date("D, d M Y", $tanggal)." ";
@@ -45,7 +42,7 @@
 <div class="sidenav">
 	<center><profil>
     <img src="user_images/<?php echo $_SESSION["user"]["images"] ?>" height="150px"/>
-    <br><?php echo $_SESSION["user"]["username"] ?>
+    <br><?php echo $_SESSION["user"]["nip"] ?>
     <br><span><?php echo  $_SESSION["user"]["email"]?></span>
     </profil></center>
     <br>

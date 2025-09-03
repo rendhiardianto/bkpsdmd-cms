@@ -13,11 +13,12 @@ session_destroy();
 <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<img class="mySlides" src="images/index_pict/1.jpg" style="width:100%">
+    <img class="mySlides" src="images/index_pict/1.jpg" style="width:100%">
 	<img class="mySlides" src="images/index_pict/2.jpg" style="width:100%">
 	<img class="mySlides" src="images/index_pict/3.jpg" style="width:100%">
 	<img class="mySlides" src="images/index_pict/4.jpg" style="width:100%">
 	<img class="mySlides" src="images/index_pict/5.jpg" style="width:100%">
+    
 	<section class="wrapper">
         <header>
             <logo>

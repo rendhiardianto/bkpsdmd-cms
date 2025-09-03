@@ -299,9 +299,7 @@ body {
 }
 .flex-item-main {
   flex: 20%;
-}
-.flex-item-main img {
-	
+  padding: 5px;
 }
 .flex-item-main img:hover {
 	filter: invert(50%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(80%);
@@ -309,15 +307,19 @@ body {
 }
 .flex-item-one {
   flex: 20%;
+  padding: 5px;
 }
 .flex-item-two {
   flex: 20%;
+  padding: 5px;
 }
 .flex-item-three {
   flex: 20%;
+  padding: 5px;
 }
 .flex-item-four {
   flex: 20%;
+  padding: 5px;
 }
 
 .flex-item-main sub, .flex-item-one sub, .flex-item-two sub, .flex-item-three sub, .flex-item-four sub {
@@ -332,11 +334,7 @@ body {
     flex: 40%;
   }
 }
-@media (max-width: 800px) {
-  .flex-item-main, .flex-item-one, .flex-item-two, .flex-item-three, .flex-item-four {
-    flex: 30%;
-  }
-}
+
 /* =================================== FOOTER =========================================*/
 * {
 	box-sizing: border-box;
