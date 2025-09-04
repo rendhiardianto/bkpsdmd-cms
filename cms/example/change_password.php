@@ -1,7 +1,7 @@
 <?php
 include "db.php";
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -21,4 +21,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Old password is incorrect!'); window.location='profile.php';</script>";
     }
 }
-?>
+?>  zip_entry_read

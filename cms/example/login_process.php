@@ -25,15 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($row['role'] == 'admin') {
         header("Location: admin_dashboard.php");
     } else {
-        header("Location: dashboard.php");
+        header("Location: user_dashboard.php");
     }
     exit();
 
         } else {
-            echo "<script>alert('Invalid password!'); window.location='login.php';</script>";
+            echo "<script>alert('Invalid password!'); window.location='index.php';</script>";
         }
     } else {
-        echo "<script>alert('No account found with that email!'); window.location='login.php';</script>";
+        echo "<script>alert('No account found with that email!'); window.location='index.php';</script>";
     }
 }
 ?>

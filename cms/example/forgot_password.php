@@ -1,8 +1,13 @@
 <?php
 include "db.php";
 
+// Load PHPMailer classes manually (no Composer)
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
@@ -26,10 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('yourgmail@gmail.com', 'My App');
+            $mail->setFrom('ardianto.rendhi@gmail.com', 'My App');
             $mail->addAddress($email, $fullname);
 
-            $resetLink = "http://localhost/signup-system/reset_password.php?token=$token";
+            $resetLink = "http://localhost/bkpsdmd-cms/cms/example/reset_password.php?token=$token";
             $mail->isHTML(true);
             $mail->Subject = "Password Reset Request";
             $mail->Body = "Hello $fullname,<br><br>
@@ -38,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                           If you didn’t request this, please ignore.";
 
             $mail->send();
-            echo "<script>alert('Password reset link sent! Check your email.'); window.location='login.php';</script>";
+            echo "<script>alert('Password reset link sent! Check your email.'); window.location='index.php';</script>";
         } catch (Exception $e) {
             echo "<script>alert('Mailer Error: {$mail->ErrorInfo}');</script>";
         }
@@ -67,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="email" name="email" placeholder="Enter your email" required>
       <button type="submit">Send Reset Link</button>
     </form>
-    <p><a href="login.php">Back to Login</a></p>
+    <p><a href="index.php">Back to Login</a></p>
   </div>
 </body>
 </html>

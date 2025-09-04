@@ -16,6 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
         $fullname = $user['fullname'];
+        $token = $user['verify_token'];
+        $lastResend = $user['last_resend'];
+
+        // ✅ Cooldown check (5 minutes)
+    if ($lastResend && (time() - strtotime($lastResend)) < 300) {
+        $wait = 300 - (time() - strtotime($lastResend));
+        echo "<script>alert('Please wait $wait seconds before resending.');window.location='index.php';</script>";
+        exit();
+    }
 
         // If user already has a token, reuse it. Otherwise, create a new one.
         if (empty($user['verify_token'])) {
@@ -29,14 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
+            $mail->Host = gethostbyname ('smtp.gmail.com');
             $mail->SMTPAuth = true;
             $mail->Username = 'ardianto.rendhi@gmail.com';  // 🔹 replace with your Gmail
             $mail->Password = 'jpkxofrdmykbzxui';   // 🔹 use Gmail App Password (not normal password!)
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('yourgmail@gmail.com', 'My App');
+            $mail->setFrom('ardianto.rendhi@gmail.com', 'My App');
             $mail->addAddress($email, $fullname);
 
             $verifyLink = "http://localhost/bkpsdmd-cms/cms/example/verify.php?token=$token";
@@ -45,15 +54,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Body = "Hello $fullname,<br><br>
                           Here is your verification link:<br>
                           <a href='$verifyLink'>$verifyLink</a><br><br>
-                          Thanks,<br>My App Team";
+                          Thanks,<br>Tim PUSDATIN BKPSDMD Kab. Merangin";
 
             $mail->send();
-            echo "<script>alert('Verification email resent! Check your inbox.'); window.location='login.php';</script>";
+            // ✅ Update last resend time
+            $conn->query("UPDATE users SET last_resend=NOW() WHERE id=" . $user['id']);
+
+            echo "<script>alert('Verification email resent! Check your inbox.'); 
+            window.location='index.php';</script>";
         } catch (Exception $e) {
-            echo "<script>alert('Mailer Error: {$mail->ErrorInfo}'); window.location='login.php';</script>";
+            echo "<script>alert('Mailer Error: {$mail->ErrorInfo}'); window.location='index.php';</script>";
         }
     } else {
-        echo "<script>alert('No unverified account found with this email.'); window.location='login.php';</script>";
+        echo "<script>alert('No unverified account found with this email.'); window.location='index.php';</script>";
     }
 }
 ?>
@@ -77,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="email" name="email" placeholder="Enter your email" required>
       <button type="submit">Resend</button>
     </form>
-    <p><a href="login.php">Back to Login</a></p>
+    <p><a href="index.php">Back to Login</a></p>
   </div>
 </body>
 </html>

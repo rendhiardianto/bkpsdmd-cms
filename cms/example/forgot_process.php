@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $expiry = date("Y-m-d H:i:s", strtotime("+1 hour"));
         $conn->query("UPDATE users SET reset_token='$token', reset_expiry='$expiry' WHERE email='$email'");
 
-        $reset_link = "http://localhost/reset_password.php?token=$token";
+        $reset_link = "http://localhost/bkpsdmd-cms/cms/example/reset_password.php?token=$token";
         
         // Simple mail (works if PHP mail is configured)
         $subject = "Password Reset";
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $headers = "From: no-reply@bkpsdmd.meranginkab.go.id";
         mail($email, $subject, $message, $headers);
 
-        echo "<script>alert('Password reset link sent! Check your email.'); window.location='login.php';</script>";
+        echo "<script>alert('Password reset link sent! Check your email.'); window.location='index.php';</script>";
     } else {
         echo "<script>alert('No account found with that email!'); window.location='forgot_password.php';</script>";
     }

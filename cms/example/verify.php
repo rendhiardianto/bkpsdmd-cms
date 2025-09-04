@@ -7,7 +7,7 @@ if (isset($_GET['token'])) {
 
     if ($result->num_rows > 0) {
         $conn->query("UPDATE users SET verified=1, verify_token=NULL WHERE verify_token='$token'");
-        echo "<h2>Email verified! ✅</h2><p>You can now <a href='login.php'>login</a>.</p>";
+        echo "<h2>Email verified! ✅</h2><p>You can now <a href='index.php'>login</a>.</p>";
     } else {
         echo "<h2>Invalid or expired verification link ❌</h2>";
     }

@@ -1,7 +1,7 @@
 <?php
 include "db.php";
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -80,7 +80,7 @@ $user = $result->fetch_assoc();
       <button type="submit">Change Password</button>
     </form>
 
-    <a href="dashboard.php" class="logout">⬅ Back to Dashboard</a>
+    <a href="user_dashboard.php" class="logout">⬅ Back to Dashboard</a>
   </div>
 </body>
 </html>

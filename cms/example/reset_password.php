@@ -9,7 +9,7 @@ if (isset($_GET['token'])) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $newPass = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $conn->query("UPDATE users SET password='$newPass', reset_token=NULL WHERE reset_token='$token'");
-            echo "<script>alert('Password reset successful! You can now login.'); window.location='login.php';</script>";
+            echo "<script>alert('Password reset successful! You can now login.'); window.location='index.php';</script>";
         }
     } else {
         echo "<h2>Invalid or expired reset link ❌</h2>";
