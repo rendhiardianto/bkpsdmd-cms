@@ -1,9 +1,14 @@
 <?php
 include "db.php";
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-    exit();
-}
+include "auth.php";
+requireRole('user');
+?>
+
+
+<?php
+$userId = $_SESSION['user_id'];
+$result = $conn->query("SELECT fullname, nip, profile_pic FROM users WHERE id=" . $_SESSION['user_id']);
+$user = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -42,8 +47,22 @@ if (!isset($_SESSION['user_id'])) {
 <body>
   <div class="box">
     <h1>Welcome, <?php echo $_SESSION['fullname']; ?> 🎉</h1>
+
+    <p>NIP: <?php echo $user['nip']; ?> </p>
+
     <p>You are now logged in to your dashboard.</p>
+
+    <?php if ($user['profile_pic']): ?>
+    <img src="uploads/profile_pics/<?php echo $user['profile_pic']; ?>" 
+       alt="Profile Picture" style="width:120px; height:120px; border-radius:50%;">
+    <?php else: ?>
+
+    <img src="uploads/profile_pics/default.png" 
+       alt="Default Profile" style="width:120px; height:120px; border-radius:50%;">
+    <?php endif; ?>
+
     <p><a href="profile.php">👤 View / Edit Profile</a></p>
+
     <a href="logout.php">Logout</a>
   </div>
 </body>

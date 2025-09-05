@@ -1,9 +1,27 @@
 <?php
 include "db.php";
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-    header("Location: index.php");
-    exit();
+include "auth.php";
+requireRole('admin');
+  //PENGUMUMAN
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $conn->real_escape_string($_POST['title']);
+    $content = $conn->real_escape_string($_POST['content']);
+    $created_by = $_SESSION['fullname'];
+
+    $sql = "INSERT INTO announcements (title, content, created_by) 
+            VALUES ('$title', '$content', '$created_by')";
+    if ($conn->query($sql)) {
+        echo "<script>alert('✅ Announcement added!'); window.location='admin_dashboard.php';</script>";
+    } else {
+        echo "<script>alert('❌ Error: " . $conn->error . "');</script>";
+    }
 }
+?>
+
+<?php
+$userId = $_SESSION['user_id'];
+$result = $conn->query("SELECT fullname, profile_pic FROM users WHERE id=$userId");
+$user = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -39,10 +57,25 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     button:hover { background:#2980b9; }
     #userTable { margin-top:20px; }
     .logout { display:block; margin-top:20px; text-align:center; }
+
+    .form-box { max-width:600px; margin:auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+    input, textarea, button { width:100%; padding:12px; margin:8px 0; border-radius:6px; border:1px solid #ccc; }
+    button { background:#27ae60; border:none; color:white; font-weight:bold; cursor:pointer; }
+    button:hover { background:#219150; }
+
   </style>
 </head>
 <body>
-  <h2>👑 Admin Dashboard</h2>
+  <h2>👑 Admin Dashboard 👑</h2>
+<?php if ($user['profile_pic']): ?>
+    <img src="uploads/profile_pics/<?php echo $user['profile_pic']; ?>" 
+       alt="Profile Picture" style="width:120px; height:120px; border-radius:50%;">
+    <?php else: ?>
+    <img src="uploads/profile_pics/default.png" 
+       alt="Default Profile" style="width:120px; height:120px; border-radius:50%;">
+    <?php endif; ?>
+
+    <h1>Welcome, <?php echo $user['fullname']; ?>!</h1>
 
   <div class="top-bar">
     <a href="admin_add.php" style="padding:8px 14px;background:#2ecc71;color:white;border-radius:6px;text-decoration:none;">➕ Add User</a>
@@ -61,6 +94,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
   <div id="userTable">
     <!-- AJAX loads user table here -->
   </div>
+  <div class="form-box">
+    <h2>Add Announcement</h2>
+    <form method="POST">
+      <input type="text" name="title" placeholder="Announcement Title" required>
+      <textarea name="content" rows="5" placeholder="Write announcement..." required></textarea>
+      <button type="submit">Publish</button>
+    </form>
 
   <a href="logout.php" class="logout">🚪 Logout</a>
 

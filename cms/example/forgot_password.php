@@ -26,12 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'ardianto.rendhi@gmail.com';  // 🔹 replace with your Gmail
-            $mail->Password = 'jpkx ofrd mykb zxui';   // 🔹 use Gmail App Password (not normal password!)
+            $mail->Username = 'bkd.merangin@gmail.com';  // 🔹 replace with your Gmail
+            $mail->Password = 'dlmh zkgz awku aokg';   // 🔹 use Gmail App Password (not normal password!)
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('ardianto.rendhi@gmail.com', 'My App');
+            // Recipients
+            $mail->setFrom('yourgmail@gmail.com', 'Apa ini');
             $mail->addAddress($email, $fullname);
 
             $resetLink = "http://localhost/bkpsdmd-cms/cms/example/reset_password.php?token=$token";
@@ -40,7 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Body = "Hello $fullname,<br><br>
                           Click this link to reset your password:<br>
                           <a href='$resetLink'>$resetLink</a><br><br>
-                          If you didn’t request this, please ignore.";
+                          If you didn’t request this, please ignore.<br><br><br>
+                          Best Regards,<br>Tim PUSDATIN BKPSDMD Kab. Merangin";
+                
 
             $mail->send();
             echo "<script>alert('Password reset link sent! Check your email.'); window.location='index.php';</script>";

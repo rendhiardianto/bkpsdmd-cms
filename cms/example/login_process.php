@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script>alert('Invalid password!'); window.location='index.php';</script>";
         }
     } else {
-        echo "<script>alert('No account found with that email!'); window.location='index.php';</script>";
+        echo "<script>alert('No account found with that NIP!'); window.location='index.php';</script>";
     }
 }
 ?>

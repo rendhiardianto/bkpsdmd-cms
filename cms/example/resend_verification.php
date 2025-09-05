@@ -37,24 +37,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Send email with PHPMailer
         $mail = new PHPMailer(true);
         try {
-            $mail->isSMTP();
-            $mail->Host = gethostbyname ('smtp.gmail.com');
-            $mail->SMTPAuth = true;
-            $mail->Username = 'ardianto.rendhi@gmail.com';  // 🔹 replace with your Gmail
-            $mail->Password = 'jpkxofrdmykbzxui';   // 🔹 use Gmail App Password (not normal password!)
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
+           $mail->isSMTP();
+              $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'bkd.merangin@gmail.com';  // 🔹 replace with your Gmail
+                $mail->Password = 'dlmh zkgz awku aokg';   // 🔹 use Gmail App Password (not normal password!)
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
 
-            $mail->setFrom('ardianto.rendhi@gmail.com', 'My App');
-            $mail->addAddress($email, $fullname);
+                $mail->setFrom('yourgmail@gmail.com', 'apa ini');
+                $mail->addAddress($email, $user['fullname']);
 
             $verifyLink = "http://localhost/bkpsdmd-cms/cms/example/verify.php?token=$token";
             $mail->isHTML(true);
             $mail->Subject = "Resend Verification Email";
             $mail->Body = "Hello $fullname,<br><br>
                           Here is your verification link:<br>
-                          <a href='$verifyLink'>$verifyLink</a><br><br>
-                          Thanks,<br>Tim PUSDATIN BKPSDMD Kab. Merangin";
+                          <a href='$verifyLink'>$verifyLink</a><br><br><br>
+                          Best Regards,<br>Tim PUSDATIN BKPSDMD Kab. Merangin";
 
             $mail->send();
             // ✅ Update last resend time

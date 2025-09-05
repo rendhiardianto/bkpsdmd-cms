@@ -11,17 +11,75 @@ require 'PHPMailer/src/SMTP.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nip = $conn->real_escape_string($_POST['nip']);
     $fullname = $conn->real_escape_string($_POST['fullname']);
     $email = $conn->real_escape_string($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $token = bin2hex(random_bytes(16));
+    $profilePic = null;
+    
+
+    if(empty($fullname))
+		{
+			$errMSG = "Masukkan Nama Depan Anda!";
+		}
+		else if(empty($email))
+		{
+			$errMSG = "Masukkan Email Anda!";
+		}
+		else
+		{
+			$upload_dir = 'user_images/'; // upload directory
+	
+			$imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
+		
+			// valid image extensions
+			$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
+		
+			// rename uploading image
+			$images = rand(1000,1000000).".".$imgExt;
+				
+			// allow valid image file formats
+			if(in_array($imgExt, $valid_extensions))
+			{			
+				// Check file size
+				if($imgSize < 500000)
+				{
+					move_uploaded_file($tmp_dir,$upload_dir.$images);
+				}
+				else
+				{
+					$errMSG = "Maaf, ukuran file foto Anda terlalu besar, maksimal 500KB.";
+				}
+			}
+			else
+			{
+				$errMSG = "Maaf, hanya file bertipe JPG, JPEG, PNG & GIF saja yang diperbolehkan.";		
+			}
+    }
+
+    // Validate NIP format (must be 18 digits numeric)
+    if (!preg_match('/^[0-9]{18}$/', $nip)) {
+    echo "<script>alert('NIP must be exactly 18 digits (numbers only).'); window.location='index.php';</script>";
+    exit();
+    }
+    
+    // check if NIP already exists
+    $checkNip = $conn->query("SELECT id FROM users WHERE nip='$nip'");
+    if ($checkNip->num_rows > 0) {
+        echo "<script>alert('This NIP is already registered!'); window.location='index.php';</script>";
+        exit();
+    }
 
     $check = $conn->query("SELECT * FROM users WHERE email='$email'");
+    $token = bin2hex(random_bytes(16));
     if ($check->num_rows > 0) {
-        echo "<script>alert('Email already exists!');</script>";
-    } else {
-        $sql = "INSERT INTO users (fullname, email, password, role, verified, verify_token) 
-                VALUES ('$fullname', '$email', '$password', 'user', 0, '$token')";
+        echo "<script>alert('Email already exists!');</script>";}
+    else {
+        $token = bin2hex(random_bytes(16)); // email verification token
+        $sql = "INSERT INTO users (nip, fullname, email, password, profile_pic, role, verified, verification_token)
+        VALUES ('$nip', '$fullname', '$email', '$password', '$profilePic', 'user', 0, '$token')";
+
         if ($conn->query($sql)) {
 
             // ✅ Send email with PHPMailer
@@ -31,13 +89,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'ardianto.rendhi@gmail.com';  // 🔹 replace with your Gmail
-                $mail->Password = 'jpkxofrdmykbzxui';   // 🔹 use Gmail App Password (not normal password!)
+                $mail->Username = 'bkd.merangin@gmail.com';  // 🔹 replace with your Gmail
+                $mail->Password = 'dlmh zkgz awku aokg';   // 🔹 use Gmail App Password (not normal password!)
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
                 // Recipients
-                $mail->setFrom('yourgmail@gmail.com', 'My App');
+                $mail->setFrom('yourgmail@gmail.com', 'Apa ini');
                 $mail->addAddress($email, $fullname);
 
                 // Content
@@ -45,8 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->isHTML(true);
                 $mail->Subject = "Verify your email";
                 $mail->Body = "Hello $fullname,<br><br>Please verify your email by clicking this link:<br>
-                              <a href='$verifyLink'>$verifyLink</a><br><br>
-                              Thanks,<br>Tim Pusdatin BKPSDMD Kab. Merangin";
+                              <a href='$verifyLink'>$verifyLink</a><br><br><br>
+                              Best Regards,<br>Tim PUSDATIN BKPSDMD Kab. Merangin";
 
                 $mail->send();
                 echo "<script>alert('Check your Gmail inbox for the verification link!');</script>";
@@ -72,14 +130,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
   <div class="form-box">
-    <h2>Create Account</h2>
+    <h2>Buat Akun CMS</h2>
     <form method="POST">
-      <input type="text" name="fullname" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <button type="submit">Sign Up</button>
+      <input type="text" name="nip" placeholder="Nomor Induk Pegawai (NIP)" required>
+      <input type="text" name="fullname" placeholder="Nama Lengkap" required>
+      <input type="email" name="email" placeholder="Alamt Email" required>
+      <input type="password" name="password" placeholder="Kata Sandi" required>
+      <p>Upload Foto Profil<br>
+      <input class="input-group" type="file" name="userPic" accept="image/*"/><p></p>
+      <button type="submit">Daftar</button>
     </form>
-    <p>Already have an account? <a href="index.php">Login</a></p>
+    <p>Sudah punya akun CMS? <a href="index.php">Masuk</a></p>
   </div>
 </body>
 </html>

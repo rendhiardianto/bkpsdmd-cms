@@ -16,19 +16,21 @@ $showResend = false; // flag to control button visibility
 
 // ---------------- LOGIN ----------------
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
-    $email = $conn->real_escape_string($_POST['email']);
+    $nip = $conn->real_escape_string($_POST['nip']);
     $password = $_POST['password'];
 
-    $result = $conn->query("SELECT * FROM users WHERE email='$email'");
+    $result = $conn->query("SELECT * FROM users WHERE nip='$nip'");
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
         if ($user['verified'] == 0) {
-            echo "<script>alert('Your email is not verified. Click Resend Verification.');</script>";
+            echo "<script>alert('Your NIP is not verified. Click Resend Verification.');</script>";
             $showResend = true; // show button now
-        } elseif (password_verify($password, $user['password'])) {
+        } 
+        elseif (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['fullname'] = $user['fullname'];
 
             if ($user['role'] === 'admin') {
                 header("Location: admin_dashboard.php");
@@ -39,8 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         } else {
             echo "<script>alert('Invalid password!');</script>";
         }
-    } else {
-        echo "<script>alert('Email not found! Please register.');</script>";
+    }
+
+    else {
+        echo "<script>alert('NIP not found! Please register.');</script>";
     }
 }
 
@@ -63,12 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['resend'])) {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'ardianto.rendhi@gmail.com';  // 🔹 replace with your Gmail
-                $mail->Password = 'jpkxofrdmykbzxui';   // 🔹 use Gmail App Password (not normal password!)
+                $mail->Username = 'bkd.merangin@gmail.com';  // 🔹 replace with your Gmail
+                $mail->Password = 'dlmh zkgz awku aokg';   // 🔹 use Gmail App Password (not normal password!)
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom('ardianto.rendhi@gmail.com', 'My App');
+                $mail->setFrom('yourgmail@gmail.com', 'apa ini');
                 $mail->addAddress($email, $user['fullname']);
 
                 $verifyLink = "http://localhost/bkpsdmd-cms/cms/example/verify.php?token=$token";
@@ -76,7 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['resend'])) {
                 $mail->Subject = "Verify Your Account";
                 $mail->Body = "Hello {$user['fullname']},<br><br>
                                Click below to verify your account:<br>
-                               <a href='$verifyLink'>$verifyLink</a>";
+                               <a href='$verifyLink'>$verifyLink</a><br><br><br>
+                               Best Regards,<br>Tim PUSDATIN BKPSDMD Kab. Merangin";
 
                 $mail->send();
                 echo "<script>alert('Verification email resent! Please check your inbox.');</script>";
@@ -85,39 +90,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['resend'])) {
             }
         }
     } else {
-        echo "<script>alert('No account found with that email. Please register again.');</script>";
+        echo "<script>alert('No account found with that NIP. Please register again.');</script>";
     }
 }
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Login</title>
-  <style>
-    body { font-family: Arial; background:#f4f6f9; padding:30px; }
-    .form-box { max-width:400px; margin:auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-    input, button { width:100%; padding:12px; margin:8px 0; border-radius:6px; border:1px solid #ccc; }
-    button { border:none; color:white; font-weight:bold; cursor:pointer; }
-    .login-btn { background:#27ae60; }
-    .login-btn:hover { background:#219150; }
-    .resend-btn { background:#2980b9; }
-    .resend-btn:hover { background:#21618c; }
-  </style>
-</head>
-<body>
-  <div class="form-box">
-    <h2>Login</h2>
-    <form method="POST">
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <p><a href="forgot_password.php">Forgot Password?</a></p>
-      <button type="submit" name="login" class="login-btn">Login</button>
 
-      <?php if ($showResend): ?>
-  <p><a href="resend_verification.php?email=<?php echo urlencode($email); ?>" class="resend-btn">Resend Verification</a></p>
-<?php endif; ?>
+<head>
+    <title>Login CMS BKPSDMD Kab. Merangin</title>
+    <link rel="shortcut icon" href="images/button/logo2.png">
+    <link href="index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <div class="form-box">
+    <h2>Masuk</h2>
+    <form method="POST">
+      <input type="nip" name="nip" placeholder="NIP" required>
+      <input type="password" name="password" placeholder="Kata Sandi" required>
+      <p><a href="forgot_password.php">Lupa Kata Sandi?</a></p>
+      <button type="submit" name="login" class="login-btn">Masuk</button>
+
+    <?php if ($showResend): ?>
+    <p><a href="resend_verification.php?email=<?php echo urlencode($email); ?>" class="resend-btn">Kirim ulang verifikasi?</a></p>
+    <?php endif; ?>
     </form>
-    <p>No account? <a href="daftar.php">Sign Up</a></p>
+    <p>Belum ada akun? daftar <a href="daftar.php">di sini</a></p>
   </div>
 </body>
 </html>

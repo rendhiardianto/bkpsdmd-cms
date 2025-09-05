@@ -6,10 +6,25 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nip = $conn->real_escape_string($_POST['nip']);
     $fullname = $conn->real_escape_string($_POST['fullname']);
     $email = $conn->real_escape_string($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $role = $conn->real_escape_string($_POST['role']);
+
+    // Validate NIP format (must be 18 digits numeric)
+    if (!preg_match('/^[0-9]{18}$/', $nip)) {
+    echo "<script>alert('NIP must be exactly 18 digits (numbers only).'); window.location='index.php';</script>";
+    exit();
+    }
+    
+    // check if NIP already exists
+    $checkNip = $conn->query("SELECT id FROM users WHERE nip='$nip'");
+    if ($checkNip->num_rows > 0) {
+        echo "<script>alert('This NIP is already registered!'); window.location='index.php';</script>";
+        exit();
+    }
 
     // check if email exists
     $check = $conn->query("SELECT * FROM users WHERE email='$email'");
@@ -18,10 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $sql = "INSERT INTO users (fullname, email, password, role) VALUES ('$fullname', '$email', '$password', '$role')";
+    $sql = "INSERT INTO users (nip, fullname, email, password, role) 
+    VALUES ('$nip', '$fullname', '$email', '$password', '$role')";
+
     if ($conn->query($sql)) {
         echo "<script>alert('User added successfully!'); window.location='admin_dashboard.php';</script>";
-    } else {
+    } 
+    else {
         echo "<script>alert('Error adding user.'); window.location='admin_add.php';</script>";
     }
 }
@@ -66,12 +84,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <div class="form-box">
     <h2>Add New User</h2>
     <form method="POST">
+      <input type="text" name="nip" placeholder="NIP" required>
       <input type="text" name="fullname" placeholder="Full Name" required>
       <input type="email" name="email" placeholder="Email Address" required>
       <input type="password" name="password" placeholder="Password" required>
+      <p>Access Autorithy</p>
       <select name="role">
-        <option value="user">User</option>
-        <option value="admin">Admin</option>
+        
+        <option value="user">Admin</option>
+        <option value="admin">Kaban</option>
+        <option value="admin">Sekban</option>
+        <option value="admin">Kabid</option>
+        <option value="admin">User</option>
       </select>
       <button type="submit">Create User</button>
     </form>
